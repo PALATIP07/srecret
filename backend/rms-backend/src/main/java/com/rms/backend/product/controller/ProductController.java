@@ -19,28 +19,28 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/get")
+    @GetMapping
     public ResponseEntity<List<ProductReq>> getProducts() {
         List<ProductReq> products = productService.getAllProducts();
         return ResponseEntity.ok(products);
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<ProductReq> getProductById(@PathVariable Long id) {
         return ResponseEntity.ok(productService.getProductById(id));
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public ResponseEntity<ProductReq> createProduct(@RequestBody ProductReqDto request) {
         return ResponseEntity.ok(productService.createProduct(request));
     }
 
-    @PostMapping("/update/{id}")
+    @PostMapping("/{id}")
     public ResponseEntity<ProductReq> updateProduct(@PathVariable Long id, @RequestBody ProductReqDto request) {
         return ResponseEntity.ok(productService.updateProduct(id, request));
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<ProductReq> deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
         return ResponseEntity.ok().build();
