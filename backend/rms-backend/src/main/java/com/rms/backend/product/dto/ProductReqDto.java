@@ -1,20 +1,13 @@
 package com.rms.backend.product.dto;
+
 import java.math.BigDecimal;
 
-public class ProductReq {
-    private Long id;
+public class ProductReqDto {
     private String name;
     private String imageUrl;
+    private BigDecimal costPrice;
     private BigDecimal minPrice;
     private Integer stock;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -30,6 +23,14 @@ public class ProductReq {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public BigDecimal getCostPrice() {
+        return costPrice;
+    }
+
+    public void setCostPrice(BigDecimal costPrice) {
+        this.costPrice = costPrice;
     }
 
     public BigDecimal getMinPrice() {
