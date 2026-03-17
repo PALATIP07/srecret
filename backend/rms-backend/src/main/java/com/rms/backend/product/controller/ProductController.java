@@ -1,7 +1,6 @@
 package com.rms.backend.product.controller;
+
 import com.rms.backend.product.dto.ProductReq;
-import com.rms.backend.product.dto.ProductReqDto;
-import com.rms.backend.product.entity.ProductEntity;
 import com.rms.backend.product.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,15 +13,13 @@ public class ProductController {
 
     private final ProductService productService;
 
-    //Constructor Injection
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
     @GetMapping
     public ResponseEntity<List<ProductReq>> getProducts() {
-        List<ProductReq> products = productService.getAllProducts();
-        return ResponseEntity.ok(products);
+        return ResponseEntity.ok(productService.getAllProducts());
     }
 
     @GetMapping("/{id}")
@@ -31,19 +28,19 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<ProductReq> createProduct(@RequestBody ProductReqDto request) {
+    public ResponseEntity<ProductReq> createProduct(@RequestBody ProductReq request) {
         return ResponseEntity.ok(productService.createProduct(request));
     }
 
-    @PostMapping("/{id}")
-    public ResponseEntity<ProductReq> updateProduct(@PathVariable Long id, @RequestBody ProductReqDto request) {
+    // 🔥 เปลี่ยนเป็น PUT สำหรับการ Update
+    @PutMapping("/{id}")
+    public ResponseEntity<ProductReq> updateProduct(@PathVariable Long id, @RequestBody ProductReq request) {
         return ResponseEntity.ok(productService.updateProduct(id, request));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<ProductReq> deleteProduct(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
         return ResponseEntity.ok().build();
     }
-
 }
