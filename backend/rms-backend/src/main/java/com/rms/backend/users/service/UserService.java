@@ -17,6 +17,7 @@ public class UserService {
     }
 
     private UserReq mapToDto(UserEntity entity) {
+        
         UserReq dto = new UserReq();
         dto.setId(entity.getId());
         dto.setName(entity.getName());
@@ -118,5 +119,6 @@ public class UserService {
 
         return mapToDto(user);
     }
+
 
 }

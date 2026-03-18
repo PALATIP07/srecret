@@ -8,6 +8,16 @@ public class UserReq {
     private String email;
     private String role;
     private String status;
+    private String shopName;
+
+    public String getShopName() {
+        return shopName;
+    }
+
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
+    }
+
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS Z")
     private OffsetDateTime createdAt;
 
